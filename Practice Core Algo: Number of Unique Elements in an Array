@@ -1,0 +1,71 @@
+# ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+# ✏️ Description
+# ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+# Q. Given an unsorted array, return the number of unique elements that appear only once in the array. Unique elements are those that occur exactly once.
+
+# Examples:
+# • Given an array: [3, 1, 1, 2, 3, 1, 1, 1, 4] // returns 2 (unique elements: 2 and 4)
+# • Given an array: [1] // returns 1 (unique element: 1)
+#▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+
+
+# /*
+# '''
+# 🔎 EXPLORE
+# What are some other insightful & revealing test cases?
+#  create a count var. traverse the arr and keep track of values , return elements with a count of 1
+
+#  create a dictionary that keeps track of the associated count with each element
+
+
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O(N)
+# Space: O(1)
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+
+# Initialize a count of unique elements to 0.
+# Iterate through the array, keeping track of the count of each element in a dictionary, mapping array elements to counts.
+# Whenever the count of an element becomes 1, increment the number of unique values. When the count of an element becomes 2, decrement the number of unique values.
+# At the end, return the unique count.
+
+# 🛠️ IMPLEMENT
+# Write your algorithm.
+def num_uniques(array: list[int]) -> int:
+  # init dictionary
+  counts = {}
+
+  #init count unique elements
+  unique_count =0 # coming exactly once 
+
+# Iterate through each element in the array
+  for element in array:
+      # If the element is not yet in the dictionary, it is unique
+      if element not in counts:
+          counts[element] = 1 
+          unique_count += 1
+      else:
+          # Increase the count for this element
+          counts[element] += 1
+          # If the count becomes 2, it's no longer unique
+          if counts[element] == 2:
+              unique_count -= 1
+
+  # Return the number of unique elements
+  return unique_count
+
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+# Test Cases
+print(num_uniques([])) # 0
+print(num_uniques([3, 1, 1, 2, 3, 1, 1, 1, 4])) # 2
+print(num_uniques([1])) # 1
+
+# '''
+# */
