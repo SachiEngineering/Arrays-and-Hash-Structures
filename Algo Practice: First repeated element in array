@@ -1,0 +1,64 @@
+# /*
+# '''
+# ❓ PROMPT
+# Given an array, return the first element that is repeated if you were to traverse the array from left to right, low index to high index.
+
+# Example(s)
+# firstRepeatedElement([1, 2, 3, 2, 1, 1]) == 2
+ 
+
+# 🔎 EXPLORE
+# List your assumptions & discoveries:
+ #Return none if all values are distinct
+
+# Insightful & revealing test cases:
+ #empty arr
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O(N)
+# Space: O(1)
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+ #Create a set, iterate through the array, putting elements into the set. Whenever you encounter an element that is already in the set, return it.
+
+# 🛠️ IMPLEMENT
+# function firstRepeatedElement(arr) {
+# def firstRepeatedElement(arr: list[int]) -> int: 
+ 
+def firstRepeatedElement(arr: list[int]) -> int: 
+  if arr == [] or len(arr) == 1:
+    return None
+
+  distinctSet = set()
+  for x in range(len(arr)):
+    if arr[x] in distinctSet:
+      return arr[x]
+    else:
+      distinctSet.add(arr[x])
+      if x == (len(arr)-1):
+        return None
+
+  return arr[x]
+
+
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+def main():
+  print(firstRepeatedElement([1, 2, 3, 2, 1, 1]) == 2)
+  print(firstRepeatedElement([1, 1, 1]) == 1)
+  print(firstRepeatedElement([]) == None)
+  print(firstRepeatedElement([1]) == None)
+  print(firstRepeatedElement([1, 2, 3]) == None)
+  print(firstRepeatedElement([1, 2, 1, 3]) == 1)
+  print(firstRepeatedElement([7, 7, 1, 1]) == 7)
+  print(firstRepeatedElement([2, 8, 8, 8]) == 8)
+
+if __name__ == "__main__":
+    main()
+# '''
+# */
