@@ -1,0 +1,77 @@
+# #Explore
+
+# Questions
+# Is there empty set? Assume no
+
+# Revealing test cases
+# one name arr
+# arr with all same name
+# arr with same name, one capitalized and one not
+# some duplicates
+# 1 duplicate
+# no duplicates 
+# empty arr
+
+
+# #Brainstorm
+# Iterate through whole arr
+#   Time O(N)
+#   space O(1)
+# Search ??
+
+# # Plan
+# establish a distinct fellows list
+# establish finalList
+# if arr == []
+#   return []
+# traverse through the array
+#     is element in distinct list?
+#       YES
+#         move onto next element
+#       no
+#         add them to distinct list #keep track of names already seen
+#         add them to final list # keep track of list of fellows
+    
+# return finalList
+
+# #Implement
+def removeDuplicateFellows(fellows: list[str]) -> list[str]:
+  distinctFellows = set()
+  finalList = [] #return this one
+  if fellows == []:
+    return finalList
+  for x in range(len(fellows)):
+      if fellows[x] not in distinctFellows:
+        distinctFellows.add(fellows[x])
+        finalList.append(fellows[x])
+
+  return finalList
+
+# #Verify
+# one name arr
+print(removeDuplicateFellows(["pinky"]) == ["pinky"])
+
+# arr with all same name
+print(removeDuplicateFellows(["pinky", "pinky", "pinky"]) == ["pinky"])
+
+# arr with same name, one capitalized and one not
+#why does this use SET
+#print(set(removeDuplicateFellows(["Oliver", "oliver"]))== set(["Oliver", "oliver"]))
+print(removeDuplicateFellows(["Oliver", "oliver"])== ["Oliver", "oliver"])
+
+# some duplicates
+#why does this use SET
+#print(set(removeDuplicateFellows(["oliver", "pixel", "oliver", "pinky"]))== set(["oliver", "pixel", "pinky"]))
+print(removeDuplicateFellows(["oliver", "pixel", "oliver", "pinky"])== ["oliver", "pixel", "pinky"])
+
+# no duplicates 
+#why does this use SET
+print(removeDuplicateFellows(["pinky", "paavo"]) == ["pinky", "paavo"])
+
+# empty arr
+print(removeDuplicateFellows([]) == [])
+
+
+
+
+
