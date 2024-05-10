@@ -1,0 +1,92 @@
+#You're a bartender, and you have to look out for your patrons - you don't want them to drink too much. 
+
+#Assume everyone is having the same drink, and everyone has the same set amount of "allowed servings". 
+
+#Given an array of patrons (denoted by their names, eg: Adrian), and an integer value representing "allowed servings", 
+
+#return True if someone attempts to go over the allowed number of servings per person. Otherwise, False if no one drinks too much.
+
+# Explore #############################
+#Example: limitedServings(['Joe', 'Bart', 'Larry', 'Joe', 'Carl', 'Doug', 'Joe'], 2) === true)
+
+#Questions
+# Will you ever get an invalid amount of servings (nonint, negative)? Assume no.
+
+# What to return if you get an empty array? False
+
+#capitalization differences? no
+
+# Brainstorm ##########################
+# Can traverse the arr, and keep a count of the amount of times a person appears, then compare to the set number of drinks at the end
+
+# or you can use a dictionary to attach patron name to number of drinks
+
+# Plan #############################
+
+# define function
+#   init distinct names
+#   init count
+#   if empty array
+#     return False
+#   if set is 0 and the array is not empty
+#     return True
+#   traverse the array 
+#     if element is not in distinct array 
+#       add them to distinct array
+#       increment count
+#     else if they are already in the array
+#       increment count
+#       if count is greater than servingInt
+#         return True
+      
+#   return False
+
+
+
+#Implement #############################
+#def limitedServings(namesDrink, servingInt)
+
+# def limitedServings(namesDrink, servingInt):
+#   distinctNames = [];
+#   count = 0;
+#   namesDrink.sort()
+#   if namesDrink == []:
+#     return False
+#   if namesDrink is not [] and servingInt == 0:
+#     return True
+#   for name in namesDrink:
+#     if name not in distinctNames: 
+#       distinctNames.append(name)
+#       count += 1
+#       print(count)
+#     else:
+#       count += 1
+#       print(count)
+#       if count > servingInt:
+#         return True
+
+#   return False
+
+def limitedServings(patrons, allowed_servings):
+    # Dictionary to keep track of servings 
+    drink_count = {}
+    
+    for patron in patrons:              # for each patron
+        if patron in drink_count:       # if patron is already in the drink count
+            drink_count[patron] += 1    #increment drink count
+        else:                           #if patron is first seen
+            drink_count[patron] = 1
+        
+        if drink_count[patron] > allowed_servings: #check if drink count is more than allowed 
+            return True
+    
+    return False 
+
+
+#Verify #############################
+print(limitedServings([], 3) == False)
+print(limitedServings(['Joe', 'Bart', 'Larry', 'Joe', 'Carl', 'Doug', 'Joe'], 2) == True)
+print(limitedServings(['Joe', 'Joe'], 3) == False)
+print(limitedServings(['Joe', 'Joe', 'Adrian', 'Adrian'], 3) == False)
+print(limitedServings(['Adrian', 'Bart', 'Carl', 'Doug'], 1) == False)
+print(limitedServings(['Adrian', 'Bart', 'Carl'], 0) == True)
