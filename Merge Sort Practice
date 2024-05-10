@@ -1,0 +1,61 @@
+# Q. Given an unsorted array, perform merge sort in ascending order.
+
+# Examples:
+# • Given an array: [1] // returns [1]
+# • Given an array: [3, 1, 2, 4] // returns [1, 2, 3, 4]
+
+
+def merge(A, L, leftCount, R, rightCount):
+    i, j, k = 0, 0, 0
+
+    # Merging the two arrays into A[]
+    while i < leftCount and j < rightCount:
+        if L[i] < R[j]:   #if L element is smaller than the R element
+            A[k] = L[i]   #place L element in A
+            i += 1        #increment i
+        else:             #L element is larger than element R
+            A[k] = R[j]   #place R element in A  
+            j += 1        #increment j
+        k += 1            #traverse A array
+
+    # Copy the remaining elements of L[], if there are any
+    while i < leftCount:
+        A[k] = L[i]
+        i += 1
+        k += 1
+
+    # Copy the remaining elements of R[], if there are any
+    while j < rightCount:
+        A[k] = R[j]
+        j += 1
+        k += 1
+
+def merge_sort(A):
+    n = len(A)
+    if n < 2:     #array with one element, already sorted.
+        return
+
+    mid = n // 2  #split array A
+    L = A[:mid]
+    R = A[mid:]
+
+    #recursive call to mergeSort
+    merge_sort(L)
+    merge_sort(R)
+
+    #merge final arrays
+    merge(A, L, len(L), R, len(R))
+
+def main():
+    A = [1]
+
+    # Sorting the array
+    merge_sort(A)
+
+    # Printing all elements in the array once it's sorted
+    print("Sorted array:", A)
+
+if __name__ == "__main__":
+    main()
+
+  
