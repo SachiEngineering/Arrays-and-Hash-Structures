@@ -1,0 +1,57 @@
+# /*
+# '''
+# ❓ PROMPT
+# Because strings are immutable, this problem takes more work than it does for an array. With an array, we can move individual values around and assign them into different locations. But with a string, we need to actually create an entirely new one.
+
+# Yes, in many modern languages this can be done with built in methods, but here we're working on basic coding patterns and coding fluency. We're going to mostly write this out.
+
+# Example(s)
+# reverseString("noitamroF") => "Formation"
+ 
+
+# 🔎 EXPLORE
+# List your assumptions & discoveries:
+#  Need to make an output string
+#  empty string - return empty
+
+# Insightful & revealing test cases:
+ 
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O(N)
+# Space: O(N)
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+# make a result string
+
+# for each character in the string starting from the end
+#   append to the new result string
+# return ''.join(result)
+
+# 🛠️ IMPLEMENT
+# function reverseString(s)
+# def reverseString(s):
+
+def reverseString(s):
+  result = []
+
+  for x in range (len(s)-1,-1,-1):
+    result.append(s[x])
+    
+  return ''.join(result)
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+print(reverseString("")=="")
+print(reverseString("a")=="a") 
+print(reverseString("foo")=="oof")
+print(reverseString("food")=="doof")
+
+
+#I learned that when going backwards in array, need to end at -1 index
+# '''
+# */
