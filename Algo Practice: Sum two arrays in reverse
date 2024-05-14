@@ -1,0 +1,60 @@
+# /*
+# '''
+# ❓ PROMPT
+# Given two arrays of equal length, return an array summing them together with the second array being traversed in reverse.
+
+# Example(s)
+# array1 = [1, 2, 3]
+# array2 = [4, 6, 10]
+# result = [11, 8, 7]
+
+# Explanation: *array1* is being traversed from left to right and *array2* is traversed right to left, so 1+10 = 11, 2+6 = 8, and 3+4 = 7.
+
+# array1 = [1, 5, 10, 12]
+# array2 = [2, 4, 3, 5]
+# result = [6, 8, 14, 14]
+
+# Explanation: 1+5 = 6, 5+3 = 8, 10+4 = 14, and 12+2 = 14.
+ 
+
+# 🔎 EXPLORE
+# List your assumptions & discoveries:
+ 
+
+# Insightful & revealing test cases:
+ 
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O()
+# Space: O()
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+#  Create an empty output array. Iterate through the first array in a loop where you have access to the current index. Subtract that index from the length of the arrays to get the symmetric index. Add the sum of the elements at those indices and return the output array at the end.
+
+
+
+# 🛠️ IMPLEMENT
+# function sumInReverse(arr1, arr2) {
+# def sumInReverse(arr1: list[int], arr2: list[int]) -> list[int]:
+ 
+def sumInReverse(arr1: list[int], arr2: list[int]) -> list[int]:
+  result = []
+  for x in range(len(arr1)):
+    y = len(arr1) - x -1
+    result.append(arr1[x] + arr2[y])
+
+  return result
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+print(sumInReverse([], []) == [])
+print(sumInReverse([5], [7]) == [12])
+print(sumInReverse([1,2,3], [10,20,30]) == [31,22,13])
+print(sumInReverse([1,2,3,4], [40,30,20,10]) == [11,22,33,44])
+
+# '''
+# */
