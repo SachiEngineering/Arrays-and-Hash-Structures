@@ -1,0 +1,73 @@
+# /*
+# '''
+# ❓ PROMPT
+# Today, you will be determining if an array is monotonic or not. An array is monotonic if it is either monotone increasing or monotone decreasing.
+
+# Source: https://leetcode.com/problems/monotonic-array/
+
+# Example(s)
+# [1] => true
+# [1, 2] => true
+# [2, 1] => true
+# [2, 1, 3] => false
+ 
+
+# 🔎 EXPLORE
+# List your assumptions & discoveries:
+#  Q. Can the array contain duplicated values?
+# A. Yes. In order to be monotonic, they have to be adjacent such as [1,2,2,2,3]
+# Q. What about an empty array or array of size 1?
+# A. An empty array or an array of a single element is monotonic.
+# Q: What about an array of all the same number?
+# A: An array with all duplicates is always considered monotonic.
+
+# Insightful & revealing test cases:
+#  empty array
+# 1-element array
+# strictly increasing array
+# strictly decreasing array
+# array with adjacent duplicates
+# array with separated duplicates
+# all elements of the same value
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O(N)
+# Space: O(1)
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+#Walk through the array, comparing adjacent pairs and checking for pairs out of order in both directions. 
+
+# 🛠️ IMPLEMENT
+# function isMonotonic(nums) {
+# def isMonotonic(nums: list[int]) -> bool:
+ 
+def isMonotonic(nums):
+    dec = True
+    inc = True
+
+    for i in range(0, len(nums)-1):
+        dec = dec and nums[i] >= nums[i+1]
+        inc = inc and nums[i] <= nums[i+1]
+
+    return dec or inc 
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+print(isMonotonic([]) == True)
+print(isMonotonic([5]) == True)
+print(isMonotonic([5,10]) == True)
+print(isMonotonic([10,5]) == True)
+print(isMonotonic([1,5,5,10]) == True)
+print(isMonotonic([10,5,5,1]) == True)
+print(isMonotonic([10,5,5]) == True)
+print(isMonotonic([5,5,10]) == True)
+print(isMonotonic([4,2,8]) == False)
+print(isMonotonic([8,2,4]) == False)
+print(isMonotonic([8,2,4,2]) == False)
+print(isMonotonic([5,5,5]) == True)
+# '''
+# */
