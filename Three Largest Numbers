@@ -1,0 +1,69 @@
+# /*
+# '''
+# ❓ PROMPT
+# Given an array of numbers, return an array of the three largest values. 
+
+# Example(s)
+# findThreeLargest([1, 2, 3, 4])
+# findThreeLargest([1, 2, 3, 27, 4, 5, 35, 6])
+
+ 
+
+# 🔎 EXPLORE
+# List your assumptions & discoveries:
+
+
+
+# Insightful & revealing test cases:
+ 
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O(N)
+# Space: O(1)
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+
+#if the set has only three elements, return the input arr.
+#init result arr and upper bound var.
+
+#do this 3 times:
+#for each iteration through the array, check if the value is the largest value that is smaller than the upper bound. make that the upper bound.
+
+#add the value to the results array.
+
+#return the results array.
+
+
+# 🛠️ IMPLEMENT
+# function findThreeLargest(nums) {
+# def find_three_largest(nums):
+def find_three_largest(nums):
+  if len(nums) <= 3:
+    return nums
+
+  result = []
+  upperBound = float('inf') #infinity. will be replaced by the largest numer found so far
+
+  for i in range(3): #run 3 times
+    largest = float('-inf') #negative infinity. will be replaced by the largest value in the set that is smaller than the upper bound.
+
+    for num in nums:
+      if num > largest and num < upperBound:
+        largest = num
+    result.append(largest)
+    upperBound = largest
+    
+  return result
+
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+print(find_three_largest([1, 2, 3, 4])==[4,3,2])
+print(find_three_largest([1, 2,3])==[1,2,3])
+print(find_three_largest([1, 2, 3, 27, 4, 5, 35, 6])==[35,27,6])
+# '''
+# */
