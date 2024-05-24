@@ -1,0 +1,77 @@
+# /*
+# '''
+# ❓ PROMPT
+# You're given a comma-separated string of names, and you want to print how many times each name appeared. For each person that appears, you should print a string *{name} appeared {x} times.*, in order of appearance.
+
+# To properly compare results in the test suite, return an array of strings joined by a newline as the result of your method.
+
+# return myArr.join("\n") // js
+# return "\n".join(myArr) # py
+
+# Example(s)
+# printNameFreq("Tony, Jessica, Paavo, Jessica, Tony, Zoe") ==
+# Tony appeared 2 times.
+# Jessica appeared 2 times.
+# Paavo appeared 1 time.
+# Zoe appeared 1 time.
+
+# printNameFreq("") == "Nobody appeared."
+ 
+
+# 🔎 EXPLORE
+# List your assumptions & discoveries:
+ 
+
+# Insightful & revealing test cases:
+ 
+
+# 🧠 BRAINSTORM
+# What approaches could work?
+# Algorithm 1:
+# Time: O()
+# Space: O()
+ 
+
+# 📆 PLAN
+# Outline of algorithm #: 
+# use a dictionary.
+# split the names into an array of name strings.
+# iterate through the array and increment the corresponding frequency in a hashmap. 
+#iterate through the hashmap/object an dprint  afrequency -formatted string.
+
+
+# 🛠️ IMPLEMENT
+# function printNameFreq(names) {
+# def printNameFreq(names: str) -> str:
+def printNameFreq(names: str) -> str:
+  namesArr = []
+  i = 0
+  x = 0
+
+  namesArr = names.split(", ") #split by , and space
+  
+  namesTrack = {} #init dict
+  for name in namesArr:
+    if name not in namesTrack:
+      namesTrack[name] = 1
+    else:
+      namesTrack[name] +=1
+
+  for name in namesTrack:
+    if name == '':
+      print("nobody appeared.")
+    elif name in namesTrack and namesTrack[name] > 1:
+      print(name,"appeared",namesTrack[name],"times.")
+    elif name in namesTrack and namesTrack[name] == 1:
+      print(name,"appeared",namesTrack[name],"time.")
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+printNameFreq("") 
+printNameFreq("Tony")
+printNameFreq("Tony, Jessica")
+printNameFreq("Tony, Tony, Tony")
+printNameFreq("Tony, Jessica, Paavo, Zoe")
+printNameFreq("Tony, Jessica, Paavo, Jessica, Tony, Zoe")
+# # '''
+# # */
