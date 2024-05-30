@@ -1,0 +1,83 @@
+def reverse_letters_in_words(sentence):
+    result = []
+    word = []
+
+    for char in sentence:
+        if char == ' ':
+            result.append(''.join(word[::-1])) #Reverse the characters collected in word, join them into a single string, and append to result.
+            result.append(' ') #append space 
+            word = [] #reset word
+        else:
+            word.append(char) #append character to word list
+            
+    result.append(''.join(word[::-1]))  # Append the last word
+    return ''.join(result) #join into a single string
+
+sentence = "Hello world"
+print(reverse_letters_in_words(sentence))  # Output: "olleH dlrow"
+
+############################################################################################
+def rotate_words(sentence, x):
+    words = []
+    word = []
+    for char in sentence:
+        if char == ' ':
+            words.append(''.join(word))
+            word = []
+        else:
+            word.append(char)
+    words.append(''.join(word))  # Append the last word
+
+    x = x % len(words)  # Ensure x is within the bounds of the list length
+    rotated_words = words[-x:] + words[:-x]
+    return ' '.join(rotated_words)
+
+sentence = "Hello world this is Python"
+print(rotate_words(sentence, 2))  # Output: "is Python Hello world this"
+
+############################################################################################
+# Q:  Rotate array
+
+# In this variation, you will be receiving an array of Int, where the number 0 represents a word break. Reverse all the elements between the 0s.
+
+# Ex. [1, 2, 3, 0, 4, 5, 6] returns [3, 2, 1, 0, 6, 5, 4] (1, 2, 3 and 4, 5, 6 were the two chunks that were reversed)
+
+# Ex. [1, 2, 3, 4, 5, 6] returns [6, 5, 4, 3, 2, 1] (since there are no zeroes, the entire array is considered one chunk)
+
+# Ex. [1, 0, 2, 0, 3] returns [1, 0, 2, 0, 3] (Since all the chunks size 1, no change happens)
+
+def rotateArr(arr):
+  result = []
+  chunk = [] #numbers between 0s
+
+  for element in arr:
+    if element == 0:
+      result += chunk[::-1] #reverse chunk and append
+      result.append(0)
+      chunk = [] #reset chunk
+
+    else:
+      chunk.append(element)
+
+#last chunk
+  result += chunk[::-1] 
+
+  return result
+
+print(rotateArr([1, 2, 3, 0, 4, 5, 6]))
+print(rotateArr([1, 2, 3, 4, 5, 6]))
+print(rotateArr([1, 0, 2, 0, 3])) 
+print(rotateArr([1, 0, 0, 0, 3])) 
+print(rotateArr([0,1,2,3,4,5,0,8,9,0]))
+
+############################################################################################
+def reverse_letters_in_k_chunks(s, k):
+    result = []
+    for i in range(0, len(s), k):
+        chunk = s[i:i+k]
+        result.append(chunk[::-1])
+    return ''.join(result)
+
+s = "abcdefg"
+k = 2
+print(reverse_letters_in_k_chunks(s, k))  # Output: "bacdfeg"
