@@ -1,0 +1,19 @@
+def insertionSoft(A):
+  n = len(A)
+
+  for i in range(1, n):
+
+    value = A[i]
+    hole = i
+
+    while (hole>0 and A[hole-1]>value): #no more elements or value is smaller
+      A[hole] = A[hole-1]
+      hole = hole -1
+    
+    A[hole] = value
+
+  return A
+
+##verify
+arr = [7,2,4,1,5,3]
+print(insertionSoft(arr))
